@@ -1,0 +1,51 @@
+{
+  "name": "ls-client-sdk",
+  "version": "1.0.1",
+  "type": "module",
+  "main": "dist/client/index.js",
+  "module": "dist/client/index.js",
+  "types": "dist/client/index.d.ts",
+  "scripts": {
+    "build:types": "tsc --project tsconfig.build.json",
+    "build:client": "vite build --config vite.client.config.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:types && npm run build:client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Live-Story/ls-client-sdk.git"
+  },
+  "keywords": [],
+  "author": "Live Story Inc.",
+  "license": "ISC",
+  "description": "Render Live Story content in your React applications.",
+  "exports": {
+    "./client": {
+      "types": "./dist/client/index.d.ts",
+      "import": "./dist/client/index.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "client": [
+        "dist/client/index.d.ts"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^25.1.0",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^5.1.2",
+    "react": "*",
+    "react-dom": "*",
+    "typescript": "^5.9.3",
+    "vite": "^5.0.0",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^4.0.18"
+  },
+  "peerDependencies": {
+    "react": ">=18.3.0",
+    "react-dom": ">=18.3.0"
+  }
+}
