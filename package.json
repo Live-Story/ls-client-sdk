@@ -1,6 +1,6 @@
 {
   "name": "ls-client-sdk",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "type": "module",
   "main": "dist/client/index.js",
   "module": "dist/client/index.js",
@@ -18,7 +18,7 @@
   "keywords": [],
   "author": "Live Story Inc.",
   "license": "ISC",
-  "description": "Render Live Story content in your React applications.",
+  "description": "Render Live Story content in your React based applications.",
   "exports": {
     "./client": {
       "types": "./dist/client/index.d.ts",
