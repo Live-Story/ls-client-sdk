@@ -27,19 +27,13 @@ export default function LiveStory({ entry, language, store }: LiveStoryProps) {
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    
     if (!id || !type || !mounted) return;
 
     const loadLiveStory = () => {
+      if (!(window as any).LiveStory) return;
 
-      const runLiveStory = () => {
-        if ((window as any).LiveStory) {
-          new (window as any).LiveStory(`ls-${id}`, { type });
-          console.log("ls-client-sdk npm: LS initialized");
-        }
-      };
-
-      runLiveStory();
+      new (window as any).LiveStory(`ls-${id}`, { type });
+      console.log("ls-client-sdk npm: LS initialized");
     };
 
     loadLiveStory();
