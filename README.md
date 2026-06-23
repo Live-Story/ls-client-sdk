@@ -139,6 +139,54 @@ You can customize the language and store for your Live Story by passing the opti
 Sometimes, you want to render the Live Story content on the server first (SSR) and then hydrate it on the client.  
 Here's an example of how you can fetch the `ssc` content (from a Contentful entry, or any other CMS you have) and attach it to your entry.
 
+### Server-side Fetch using official [Live Story Content API](https://livestory.io/documentation/articles/enhanced-client-side-integration#ssr66670ca767ef7e0008238c8a_box490)
+
+Check full documnetation here: https://livestory.io/documentation/articles/enhanced-client-side-integration
+
+```ts
+const LIVE_STORY_SSR_API =
+  'https://api.livestory.io/content/{contentType}/{contentId}';
+
+async function fetchLiveStorySSR(contentType, contentId) {
+  const storeCode = 'it_eu';
+  const langCode = 'it';
+
+  const apiURL = LIVE_STORY_SSR_API
+    .replace('{contentType}', contentType)
+    .replace('{contentId}', contentId)
+    + `?store_code=${storeCode}&lang_code=${langCode}`;
+
+  try {
+    const response = await fetch(apiURL);
+
+    if (!response.ok) {
+      throw new Error(`Live Story SSR request failed: ${response.status}`);
+    }
+
+    return await response.text();
+  } catch (error) {
+    console.error('Failed to fetch Live Story SSR:', error);
+    return '';
+  }
+}
+
+// Example: fetch Live Story SSR content in Next.js
+export async function getServerSideProps(context) {
+  const entry = await fetchEntry(context.params.id);
+
+  const liveStorySSR = await fetchLiveStorySSR(context.params.id);
+
+  return {
+    props: {
+      entry: {
+        ...entry,
+        ssr: liveStorySSR,
+      },
+    },
+  };
+}
+```
+
 ### Server-side Fetch (Hydrogen)
 
 ```ts
