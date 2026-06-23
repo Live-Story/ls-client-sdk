@@ -141,7 +141,7 @@ Here's an example of how you can fetch the `ssc` content (from a Contentful entr
 
 ### Server-side Fetch using official [Live Story Content API](https://livestory.io/documentation/articles/enhanced-client-side-integration#ssr66670ca767ef7e0008238c8a_box490)
 
-Check full documnetation here: https://livestory.io/documentation/articles/enhanced-client-side-integration
+Check the full documentation here: https://livestory.io/documentation/articles/enhanced-client-side-integration
 
 ```ts
 const LIVE_STORY_SSR_API =
