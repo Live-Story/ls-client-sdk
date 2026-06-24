@@ -174,7 +174,7 @@ async function fetchLiveStorySSR(contentType, contentId) {
 export async function getServerSideProps(context) {
   const entry = await fetchEntry(context.params.id);
 
-  const liveStorySSR = await fetchLiveStorySSR(context.params.id);
+  const liveStorySSR = await fetchLiveStorySSR(entry?.type, entry?.id);
 
   return {
     props: {
