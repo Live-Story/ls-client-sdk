@@ -1,14 +1,15 @@
 
 # 🚀 Live Story - Client SDK
 
-The **Live Story Client SDK** makes it easy to embed **Live Stories** in **Next.js** and **Shopify Hydrogen** apps, supporting **SSR** and **client-side initialization** out of the box.
+The **Live Story Client SDK** makes it easy to embed **Live Story** in **React**, **Next.js** and **Shopify Hydrogen** apps, supporting **SSR** and **client-side initialization** out of the box.
 
-It's designed to work seamlessly with **App Router**, `use client` components, and server-rendered content.
+It's designed to work seamlessly with **React applications**, **App Router**, `use client` components, and server-rendered content.
 
 ---
 
 ## ✨ Features
 
+- ✅ Works with **React applications**
 - ✅ Compatible with **Next.js App Router**
 - ✅ Supports **SSR + Client Hydration**
 - ✅ Works with **Shopify Hydrogen**
@@ -38,7 +39,7 @@ import type { LiveStoryEntry, LiveStoryProps } from 'ls-client-sdk/client';
   title: string;
   type: string;
   ssc?: string;           // Optional server-side content URL
-  sys?: { id: string };    // Contentful system metadata
+  sys?: { id: string };   // Headless CMS system metadata
   coverImg?: string;      // Optional cover image URL
   ssr?: string;           // Optional pre-rendered SSR content
 };
@@ -136,8 +137,8 @@ You can customize the language and store for your Live Story by passing the opti
 
 ## 🧾 Example: Fetching SSR Content for Live Story
 
-Sometimes, you want to render the Live Story content on the server first (SSR) and then hydrate it on the client.  
-Here's an example of how you can fetch the `ssc` content (from a Contentful entry, or any other CMS you have) and attach it to your entry.
+Sometimes, you want to render the Live Story content on the server first (SSR) and then hydrate it on the client.
+Here's an example of how you can fetch the `ssc` content (from an entry you have in you headless CMS) and attach it to your entry.
 
 ### Server-side Fetch using official [Live Story Content API](https://livestory.io/documentation/articles/enhanced-client-side-integration#ssr66670ca767ef7e0008238c8a_box490)
 
@@ -190,7 +191,7 @@ export async function getServerSideProps(context) {
 ### Server-side Fetch (Hydrogen)
 
 ```ts
-// Example: fetch Live Story SSR content from Contentful entry in Hydrogen
+// Example: fetch Live Story SSR content from a headless CMS entry in Hydrogen
 async function loadCriticalData(args: Route.LoaderArgs) {
   const entry = await fetchLiveStoryEntry(args.params.id);
 
@@ -218,7 +219,7 @@ async function loadCriticalData(args: Route.LoaderArgs) {
 ### Server-side Fetch (Next.js)
 
 ```ts
-// Example: fetch Live Story SSR content from Contentful entry in Next.js
+// Example: fetch Live Story SSR content from a headless CMS entry in Next.js
 export async function getServerSideProps(context) {
   const entry = await fetchLiveStoryEntry(context.params.id);
 
