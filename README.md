@@ -171,20 +171,23 @@ async function fetchLiveStorySSR(contentType, contentId) {
   }
 }
 
-// Example: fetch Live Story SSR content in Next.js
-export async function getServerSideProps(context) {
-  const entry = await fetchEntry(context.params.id);
+// Example: fetch Live Story SSR content in Next.js 13+
+export default async function LiveStoryLoader(props: { id: string }) {
+  const id = props.id; // CMS entry id
 
-  const liveStorySSR = await fetchLiveStorySSR(entry?.type, entry?.id);
+  const entry = await fetchEntry(id);
 
-  return {
-    props: {
-      entry: {
-        ...entry,
-        ssr: liveStorySSR,
-      },
-    },
-  };
+  const liveStorySSR = await fetchLiveStorySSR(
+    entry?.type,
+    entry?.id
+  );
+
+  return (
+    <LiveStory entry={{
+      ...entry,
+      ssr: liveStorySSR,
+    }} />
+  );
 }
 ```
 
