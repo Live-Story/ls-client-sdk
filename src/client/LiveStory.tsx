@@ -40,17 +40,14 @@ export default function LiveStory({ entry, language, store }: LiveStoryProps) {
   }, [id, type, mounted]);
 
   return (
-    <div>
-      {mounted && (
-        <div
-          id={`ls-${id}`}
-          data-id={id}
-          data-lang={language ?? 'default'}
-          data-store={store ?? 'default'}
-          style={{ width: "100%" }}
-          dangerouslySetInnerHTML={{ __html: ssr ?? '' }}>
-        </div>
-      )}
-    </div>
+    <div
+      id={`ls-${id}`}
+      data-id={id}
+      data-lang={language ?? 'default'}
+      data-store={store ?? 'default'}
+      style={{ width: "100%" }}
+      dangerouslySetInnerHTML={{ __html: ssr ?? '' }}
+      suppressHydrationWarning
+    />
   );
 }
