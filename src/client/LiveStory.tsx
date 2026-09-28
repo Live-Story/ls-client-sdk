@@ -43,6 +43,7 @@ export default function LiveStory({ entry, language, store }: LiveStoryProps) {
     <div
       id={`ls-${id}`}
       data-id={id}
+      data-type={type}
       data-lang={language ?? 'default'}
       data-store={store ?? 'default'}
       style={{ width: "100%" }}
