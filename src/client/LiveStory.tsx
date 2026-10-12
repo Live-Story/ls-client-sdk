@@ -46,8 +46,6 @@ export default function LiveStory({ entry, language, store }: LiveStoryProps) {
         container.querySelectorAll('script')
       );
 
-      console.log(`ls-client-sdk: ${type} ${id} scripts found`, scripts);
-
       for (const oldScript of scripts) {
         if (cancelled) return;
 
